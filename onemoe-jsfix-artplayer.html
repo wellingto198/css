@@ -521,7 +521,7 @@
         aspectRatio: true,
         flip: true,
         fullscreen: true,
-        fullscreenWeb:false,
+        fullscreenWeb: true,
         subtitleOffset: false,
         miniProgressBar: true,
         mutex: false,
@@ -547,6 +547,15 @@
             ],
         },
     ],
+
+art.on('ready', () => {
+    art.fullscreenWeb = true;
+
+    setTimeout(() => {
+        art.fullscreenWeb = false;
+    }, 3000);
+});
+	    
        subtitle: {
             url: filename1+'.ass',
             type: 'ass',
