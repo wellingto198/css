@@ -528,7 +528,7 @@
         aspectRatio: true,
         flip: true,
         fullscreen: true,
-        fullscreenWeb: true,
+        fullscreenWeb:false,
         subtitleOffset: false,
         miniProgressBar: true,
         mutex: false,
@@ -538,12 +538,12 @@
         settings: [
         {
             width: 200,
-            html: 'Config. de legenda',
+            html: 'Config. legenda',
             tooltip: 'Padrão',
             selector: [
                 {
-                    html: 'Exibição de legendas',
-                    tooltip: '开',
+                    html: 'Exibir legendas',
+                    tooltip: 'abrir',
                     switch: true,
                     onSwitch: function (item) {
                         item.tooltip = item.switch ? '关' : '开';
