@@ -547,13 +547,21 @@
             ],
         },
     ],
-        subtitle: {
-            url: filename1+'.ass',
-            type: 'ass',
-            style: {
-            color: '#fe9200',
-            fontSize: '20px',
-        },
+       // Obtenha a largura da tela
+var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+// Defina o tamanho da fonte com base na largura da tela
+var fontSize = Math.min(screenWidth * 0.02, 40); // Ajuste os valores conforme necessário
+
+// Configure o estilo da fonte no seu objeto de estilo
+subtitle: {
+    url: filename1 + '.ass',
+    type: 'ass',
+    style: {
+        color: '#fe9200',
+        fontSize: fontSize + 'px', // Use a unidade de pixel
+    },
+},
             encoding: 'utf-8',
             bilingual: true,
         },
