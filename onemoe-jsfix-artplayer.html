@@ -548,13 +548,6 @@
         },
     ],
 
-art.on('ready', () => {
-    art.fullscreenWeb = true;
-
-    setTimeout(() => {
-        art.fullscreenWeb = false;
-    }, 3000);
-});
 	    
        subtitle: {
             url: filename1+'.ass',
@@ -569,7 +562,16 @@ art.on('ready', () => {
     });
         art.on('ready', () => {
            art.autoHeight = true;
-        });
+       
+	
+art.on('ready', () => {
+    art.fullscreenWeb = true;
+
+    setTimeout(() => {
+        art.fullscreenWeb = false;
+    }, 3000);
+});
+	});
 <!--IsvideoFileEnd-->
 <!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.staticfile.org/pdf.js/2.3.200/pdf.worker.min.js';
