@@ -79,25 +79,20 @@ h1, h2 {
 
 .carousel {
     position: relative;
-    max-width: 300px;
+    max-width: 300px; /* Largura máxima do carrossel */
     margin: auto;
     overflow: hidden;
     border-radius: 8px;
 }
 
-.carousel img {
-    width: 100%;
-    display: none;
-}
-
-.carousel img.active {
-    display: block;
-}
-
-
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease;
+}
+
+.carousel img {
+    width: 100%; /* Garante que a imagem preencha o carrossel */
+    flex-shrink: 0; /* Garante que as imagens não encolham */
 }
 
 .carousel-control {
@@ -123,6 +118,7 @@ h1, h2 {
     right: 10px;
     transform: translateY(-50%);
 }
+
 
 .product button {
     background-color: #ff99c2;
