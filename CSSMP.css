@@ -25,7 +25,14 @@
 }
 
 /* Botão de Fechar do Modal */
-
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 /* Botões dentro do Modal */
 #send-whatsapp, #clear-cart {
