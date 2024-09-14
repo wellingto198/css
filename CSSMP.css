@@ -27,8 +27,8 @@
 /* Botão de Fechar do Modal */
 .close-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 50px;
     background: none;
     border: none;
     font-size: 30px;
