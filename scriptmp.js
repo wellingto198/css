@@ -1,15 +1,15 @@
- // Função para mover o carrossel
+// Função para mover o carrossel
 function moveCarousel(step, id) {
-    var carousel = document.getElementById(id);
-    var inner = carousel.querySelector('.carousel-inner');
-    var images = inner.querySelectorAll('img');
-    var currentIndex = [...images].findIndex(img => img.classList.contains('active'));
-    
+    const carousel = document.getElementById(id);
+    const inner = carousel.querySelector('.carousel-inner');
+    const images = inner.querySelectorAll('img');
+    let currentIndex = [...images].findIndex(img => img.classList.contains('active'));
+
     if (currentIndex === -1) currentIndex = 0; // Definir o índice inicial se nenhum item estiver ativo
 
-    var nextIndex = (currentIndex + step + images.length) % images.length;
+    const nextIndex = (currentIndex + step + images.length) % images.length;
 
-    inner.style.transform = 'translateX(-' + (nextIndex * 100) + '%)';
+    inner.style.transform = `translateX(-${nextIndex * 100}%)`;
 
     images[currentIndex].classList.remove('active');
     images[nextIndex].classList.add('active');
@@ -17,8 +17,8 @@ function moveCarousel(step, id) {
 
 // Função para configurar gestos
 function setupGestures(id) {
-    var carousel = document.getElementById(id);
-    var hammertime = new Hammer(carousel);
+    const carousel = document.getElementById(id);
+    const hammertime = new Hammer(carousel);
     
     hammertime.on('swipeleft', function() {
         moveCarousel(1, id);
@@ -31,9 +31,9 @@ function setupGestures(id) {
 
 // Inicializar todos os carrosséis
 function initializeCarousels() {
-    var carousels = document.querySelectorAll('.carousel');
+    const carousels = document.querySelectorAll('.carousel');
     carousels.forEach(function(carousel) {
-        var id = carousel.id;
+        const id = carousel.id;
         setupGestures(id);
     });
 }
@@ -41,8 +41,7 @@ function initializeCarousels() {
 // Configurar carrosséis após o carregamento da página
 window.addEventListener('load', initializeCarousels);
 
-     
-     let startX;
+let startX;
 
 function handleTouchStart(event) {
     startX = event.touches[0].clientX; // Guarda a posição inicial do toque
@@ -69,23 +68,6 @@ function handleTouchMove(event) {
 document.getElementById('carousel1-babydolls').addEventListener('touchstart', handleTouchStart);
 document.getElementById('carousel1-babydolls').addEventListener('touchmove', handleTouchMove);
 
-     
-     let currentIndex = 0; // Variável global para rastrear o índice da imagem atual
-
-function moveCarousel(direction, carouselId) {
-    const carousel = document.getElementById(carouselId);
-    const inner = carousel.querySelector('.carousel-inner');
-    const images = inner.querySelectorAll('img');
-    const totalImages = images.length;
-
-    // Atualiza o índice atual com base na direção
-    currentIndex = (currentIndex + direction + totalImages) % totalImages;
-
-    // Move o carrossel para a nova imagem
-    inner.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-
 // Gerenciar a seleção de tamanhos
 document.querySelectorAll('.size-button').forEach(button => {
     button.addEventListener('click', function() {
@@ -99,30 +81,29 @@ document.querySelectorAll('.size-button').forEach(button => {
     });
 });
 
-
 function toggleCart() {
-    var cartModal = document.getElementById('cartModal');
+    const cartModal = document.getElementById('cartModal');
     cartModal.style.display = (cartModal.style.display === "block") ? "none" : "block";
 }
 
 function updateCartCount() {
-    var cart = document.getElementById('cart');
-    var items = cart.getElementsByTagName('li');
-    var totalPieces = 0;
-    var quantityRegex = /^(\d+) x/;
+    const cart = document.getElementById('cart');
+    const items = cart.getElementsByTagName('li');
+    let totalPieces = 0;
+    const quantityRegex = /^(\d+) x/;
 
-    for (var i = 0; i < items.length; i++) {
-        var itemText = items[i].innerText;
-        var match = itemText.match(quantityRegex);
+    for (let i = 0; i < items.length; i++) {
+        const itemText = items[i].innerText;
+        const match = itemText.match(quantityRegex);
         if (match) {
-            var quantity = parseInt(match[1], 10);
+            const quantity = parseInt(match[1], 10);
             if (!isNaN(quantity)) {
                 totalPieces += quantity;
             }
         }
     }
 
-    var cartCount = document.getElementById('cart-count');
+    const cartCount = document.getElementById('cart-count');
     cartCount.innerText = totalPieces;
 
     if (totalPieces > 20) {
@@ -140,7 +121,7 @@ let cart = []; // Define o array do carrinho fora das funções
 
 function addToCart(productName, quantity, size, price) {
     // Verifica se o tamanho foi selecionado
-    if (size === "" || size === undefined || size === null) {
+    if (!size) {
         alert("Por favor, selecione um tamanho antes de adicionar ao pedido.");
         return;
     }
