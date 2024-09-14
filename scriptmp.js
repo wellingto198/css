@@ -179,6 +179,7 @@ function sendWhatsApp() {
     window.open(url, '_blank');
 }
 
+// Função para salvar e exibir a categoria selecionada
 function saveAndShowCategory() {
     const categorySelect = document.getElementById('categorySelect');
     const selectedCategory = categorySelect.value;
@@ -186,6 +187,7 @@ function saveAndShowCategory() {
     showCategory();
 }
 
+// Função para mostrar a categoria selecionada
 function showCategory() {
     const selectedCategory = localStorage.getItem('selectedCategory');
     document.querySelectorAll('.category').forEach(cat => cat.style.display = 'none');
@@ -197,6 +199,23 @@ function showCategory() {
         }
     }
 }
+
+// Função para carregar a seleção salva
+function loadSelection() {
+    const categorySelect = document.getElementById('categorySelect');
+    const savedCategory = localStorage.getItem('selectedCategory');
+    if (savedCategory) {
+        categorySelect.value = savedCategory;
+        showCategory(); // Exibir a categoria selecionada
+    }
+}
+
+// Configurar a exibição da categoria ao carregar a página
+window.onload = loadSelection;
+
+// Adicionar um ouvinte de evento para salvar a categoria quando o usuário faz uma seleção
+document.getElementById('categorySelect').addEventListener('change', saveAndShowCategory);
+
 
 function loadSelection() {
     const categorySelect = document.getElementById('categorySelect');
