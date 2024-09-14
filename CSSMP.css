@@ -88,11 +88,13 @@ h1, h2 {
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease;
+    width: 100%;
 }
 
 .carousel img {
-    width: 100%; /* Garante que a imagem preencha o carrossel */
-    flex-shrink: 0; /* Garante que as imagens não encolham */
+    flex: 0 0 100%;
+    width: 100%;
+    display: block;
 }
 
 .carousel-control {
